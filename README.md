@@ -56,3 +56,5 @@
 - Some important react hooks
   useState()
   useEffect()
+
+# Whenever state variable update, react triggers a reconciliation cycle(re-renders a componenet)
