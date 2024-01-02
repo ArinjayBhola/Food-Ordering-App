@@ -57,4 +57,19 @@
   useState()
   useEffect()
 
-# Whenever state variable update, react triggers a reconciliation cycle(re-renders a componenet)
+## `useState()`
+
+`useState()` is a React Hook that allows functional components to manage state. Whenever a state variable updates, React triggers a reconciliation cycle, leading to the re-rendering of the component.
+
+## `useEffect()`
+
+`useEffect()` is another React Hook used for handling side effects in functional components. Its behavior varies based on the presence or absence of a dependency array.
+
+- If **no dependency array** is provided, `useEffect` is called on every render.
+- If the **dependency array is empty**, `useEffect` is called only on the initial render (just once).
+- If the **dependency array is not empty**, `useEffect` is called every time the dependency array changes.
+
+# 2 types of Routing
+
+- Server Side Routing
+- Client Side Routing

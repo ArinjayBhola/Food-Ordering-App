@@ -1,9 +1,9 @@
-import { CDN_URL } from "../utils/Constants";
+import { CDN_URL } from "../utils/constants";
 
-const RestrauntCard = (props) => {
+const RestaurantCard = (props) => {
     const { resData } = props  //object destructuring
 
-    const { cloudinaryImageId, name, cuisines, avgRating, costForTwo } = resData; //object destructuring
+    const { cloudinaryImageId, name, cuisines, avgRating, costForTwo, sla } = resData; //object destructuring
 
     return (
         <>
@@ -17,10 +17,10 @@ const RestrauntCard = (props) => {
                 <h4>{cuisines.join(",")}</h4>
                 <h4>{avgRating} stars</h4>
                 <h4>{costForTwo}</h4>
-                <h4>{resData.sla.deliveryTime} minutes</h4>
+                <h4>{sla.deliveryTime} minutes</h4>
             </div>
         </>
     )
 }
 
-export default RestrauntCard;
+export default RestaurantCard;

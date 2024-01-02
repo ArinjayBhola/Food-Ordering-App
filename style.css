@@ -1,17 +1,24 @@
+body {
+    margin: 0;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
-    border: 1px solid black;
-}
-
-.logo-container {
-    padding: 0;
-    /* margin: 0; */
+    height: 100px;
+    margin: 0;
+    position: sticky;
+    top: 0;
+    background-color: lightgray;
+    z-index: 1000;
+    border-bottom: 1px solid #ccc;
 }
 
 .logo {
+    margin: 2px 0 0 2px;
     width: 110px;
-    height: 110px;
+    height: 95px;
+    border-radius: 10px;
 }
 
 .nav-items>ul {
@@ -30,8 +37,16 @@
 }
 
 .filter-btn {
-    margin-left: 8px;
-    cursor: pointer;
+    width: 200px;
+    height: 40px;
+    margin-top: 6px;
+}
+
+.filter-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .res-container {
@@ -41,16 +56,18 @@
 }
 
 .res-card {
-    background-color: lightgray;
+    background-color: #c5bfbf;
     width: 229px;
+    height: 545px;
     padding: 5px;
     margin: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1), 0 12px 24px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     word-wrap: break-word;
 }
 
 .res-card:hover {
-    border: 1px solid black;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), 0 16px 32px rgba(0, 0, 0, 0.4), 0 24px 48px rgba(0, 0, 0, 0.4);
 }
 
 .res-logo {
@@ -73,16 +90,85 @@
 }
 
 .login {
+    margin-top: 10px;
     width: 83px;
+    height: 44px;
     margin-right: 20px;
     padding: 0 20px;
-    cursor: pointer;
 }
 
-.filter {
+.search {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.search-box {
+    font-size: 20px;
+    width: 500px;
+    height: 35px;
+    margin-right: 10px;
+    border-radius: 15px;
+    border: 1px solid;
+}
+
+.search-box:focus {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    outline: none;
+    border: none;
 }
 
 .search-btn {
+    width: 105px;
+    height: 40px;
+}
+
+.search-btn,
+.filter-btn,
+.login {
+    font-size: 16px;
     cursor: pointer;
+    border-radius: 15px;
+    border: 1px solid;
+}
+
+.search-btn:hover,
+.filter-btn:hover,
+.login:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 0 16px 32px rgba(0, 0, 0, 0.1), 0 24px 48px rgba(0, 0, 0, 0.1);
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.menu {
+    margin-top: 15px;
+}
+
+.menu-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid;
+}
+
+.h2 {
+    margin-right: 250px;
+}
+
+.menu-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 20px 300px;
+    width: 700px;
+    border-bottom: 1px solid;
+}
+
+.menu-img {
+    border-radius: 10px;
+    max-width: 100px;
 }
