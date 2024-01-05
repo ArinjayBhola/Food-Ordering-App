@@ -21,7 +21,7 @@ const Body = () => {
             const json = await data.json();
 
             // Optional Chaining
-            const resListArray = (json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+            const resListArray = (json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
             const restaurantArray = resListArray.map((item) => item.info);
 
             setListOfRestaurant(restaurantArray);
