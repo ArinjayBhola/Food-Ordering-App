@@ -3,6 +3,7 @@ import Shimmer from "./Shimmer";
 import { useState, useEffect } from "react";
 import { RESTAURANT_API } from "../utils/constants";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
 
@@ -31,6 +32,12 @@ const Body = () => {
     catch (error) {
         console.error("Error fetching restaurant data:", error);
     };
+
+    const onlineStatus = useOnlineStatus();
+    if (onlineStatus === false)
+        return (
+            <h1>Please check your internet connection</h1>
+        )
 
     // Conditional Rendering
     return listOfRestaurant.length === 0 ? <Shimmer /> :

@@ -1,30 +1,13 @@
-import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Shimmer from "./Shimmer";
 import { CDN_URL } from "../utils/constants";
-import { MENU_API } from "../utils/constants";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 
 const RestaurantMenu = () => {
 
-    const [resInfo, setResInfo] = useState(null);
-
     const { resId } = useParams();
 
-    try {
-        useEffect(() => {
-            fetchMenu()
-        }, []);
-
-        const fetchMenu = async () => {
-            const data = await fetch(MENU_API + resId);
-            const json = await data.json();
-
-            setResInfo(json.data);
-        }
-    }
-    catch (error) {
-        console.error("Error fetching restaurant data:", error);
-    };
+    const resInfo = useRestaurantMenu(resId)
 
     if (resInfo === null) return <Shimmer />;
 
@@ -50,7 +33,6 @@ const RestaurantMenu = () => {
                             <img className="menu-img" src={CDN_URL + item.card.info.imageId} alt="Error" />
                         </div>
                     ))}
-                    {console.log(resInfo)}
                 </ul>
             </div>
         </div>
