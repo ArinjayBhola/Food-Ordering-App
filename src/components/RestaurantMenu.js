@@ -16,21 +16,21 @@ const RestaurantMenu = () => {
     const { name, avgRating } = resInfo?.cards[0]?.card?.card?.info;
 
     return (
-        <div className="menu">
-            <div className="menu-header">
-                <h2 className="h2">{name}</h2>
-                <h3>{avgRating}</h3>
+        <div className="menu bg-gray-100 p-6">
+            <div className="menu-header mb-4 ml-10">
+                <h2 className="text-3xl font-bold">{name}</h2>
+                <h3 className="text-lg text-gray-600">Average Rating: {avgRating}</h3>
             </div>
             <div className="menu-body">
                 <ul>
                     {itemCards.map((item) => (
-                        <div className="menu-items" key={item.card.info.id} >
-                            <div className="item-info">
-                                <h3>{item.card.info.name}</h3>
-                                <span> ₹{item.card.info.price / 100 || item.card.info.defaultPrice / 100}</span>
-                                <p>{item.card.info.description}</p>
+                        <div className="menu-items flex border-b border-gray-300 pb-4 mb-4 ml-10" key={item.card.info.id}>
+                            <img className="menu-img w-32 h-32 object-cover rounded-md" src={CDN_URL + item.card.info.imageId} alt="Error" />
+                            <div className="item-info ml-4">
+                                <h3 className="text-xl font-bold">{item.card.info.name}</h3>
+                                <span className="text-gray-600">₹{item.card.info.price / 100 || item.card.info.defaultPrice / 100}</span>
+                                <p className="text-gray-700">{item.card.info.description}</p>
                             </div>
-                            <img className="menu-img" src={CDN_URL + item.card.info.imageId} alt="Error" />
                         </div>
                     ))}
                 </ul>
