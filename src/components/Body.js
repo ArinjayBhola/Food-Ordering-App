@@ -1,9 +1,10 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { higerOrderComponent } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { RESTAURANT_API } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
 
@@ -13,6 +14,8 @@ const Body = () => {
 
     // To track the value of input box we have bind value with local state variable of react
     const [searchText, setSearchText] = useState("")
+
+    const { loggedInUser, setUserName } = useContext(UserContext)
 
     try {
         useEffect(() => { fetchData() }, [])
@@ -33,6 +36,9 @@ const Body = () => {
         console.error("Error fetching restaurant data:", error);
     };
 
+    // Higer Order Component
+    const IsOpen = higerOrderComponent(RestaurantCard);
+
     const onlineStatus = useOnlineStatus();
     if (onlineStatus === false)
         return (
@@ -46,7 +52,7 @@ const Body = () => {
                 <div className="body">
                     <div className="filter mb-5">
                         <div className="search p-4 flex justify-center">
-                            <input type="text" className="border border-solid border-black w-96 h-8" value={searchText}
+                            <input type="text" className="p-2  border border-solid border-black w-96 h-8 rounded-lg" value={searchText}
                                 onChange={(e) => {
                                     setSearchText(e.target.value)
                                 }} />
@@ -69,11 +75,18 @@ const Body = () => {
                                 Top Rated Restaurants
                             </button>
                         </div>
+                        <div className="filter-btn-container flex justify-center">
+                            <input
+                                className="border border-black"
+                                onChange={(e) => { setUserName(e.target.value) }}
+                                value={loggedInUser} />
+                        </div>
                     </div>
                     <div className="res-container break-words flex flex-wrap justify-center">
                         {filteredRestaurant.map(restaurant => (
-                            <Link key={restaurant.id} to={"/restaurants/" + restaurant.id} >
-                                <RestaurantCard resData={restaurant} />
+                            <Link key={restaurant.id} to={"/restaurants/" + restaurant.id}>
+                                {restaurant.isOpen ? (<IsOpen resData={restaurant} />) :
+                                    (<RestaurantCard resData={restaurant} />)}
                             </Link>
                         ))}
                     </div>
