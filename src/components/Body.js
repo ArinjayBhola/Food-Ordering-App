@@ -1,10 +1,9 @@
 import RestaurantCard, { higerOrderComponent } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { RESTAURANT_API } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import UserContext from "../utils/UserContext";
 
 const Body = () => {
 
@@ -14,8 +13,6 @@ const Body = () => {
 
     // To track the value of input box we have bind value with local state variable of react
     const [searchText, setSearchText] = useState("")
-
-    const { loggedInUser, setUserName } = useContext(UserContext)
 
     try {
         useEffect(() => { fetchData() }, [])
@@ -52,11 +49,11 @@ const Body = () => {
                 <div className="body">
                     <div className="filter mb-5">
                         <div className="search p-4 flex justify-center">
-                            <input type="text" className="p-2  border border-solid border-black w-96 h-8 rounded-lg" value={searchText}
+                            <input type="text" className="p-2  border border-solid border-gray-500 w-96 h-9 rounded-l-lg outline-none" value={searchText}
                                 onChange={(e) => {
                                     setSearchText(e.target.value)
                                 }} />
-                            <button className="px-4s bg-gray-200 ml-2 rounded-lg w-24 h-8 hover:bg-gray-300"
+                            <button className="px-4s bg-gray-300 rounded-r-lg w-24 h-9 hover:bg-gray-400"
                                 onClick={() => {
                                     // Filter the restarunt cards and update the UI
                                     const filterRestaurant = listOfRestaurant.filter(res => res.name.toLowerCase().includes(searchText.toLowerCase()))
@@ -66,7 +63,7 @@ const Body = () => {
                         </div>
                         <div className="filter-btn-container flex justify-center">
                             <button
-                                className="px-4 pb-1 bg-gray-200 mb-2 rounded-lg hover:bg-gray-300"
+                                className="px-4 pb-1 bg-gray-300 mb-2 h-9 rounded-lg hover:bg-gray-400"
                                 onClick={() => {
                                     const filterList = filteredRestaurant.filter(res => res.avgRating >= 4)
                                     setFilteredRestaurant(filterList);
@@ -74,12 +71,6 @@ const Body = () => {
                             >
                                 Top Rated Restaurants
                             </button>
-                        </div>
-                        <div className="filter-btn-container flex justify-center">
-                            <input
-                                className="border border-black"
-                                onChange={(e) => { setUserName(e.target.value) }}
-                                value={loggedInUser} />
                         </div>
                     </div>
                     <div className="res-container break-words flex flex-wrap justify-center">

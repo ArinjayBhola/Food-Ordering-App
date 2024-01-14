@@ -1,10 +1,17 @@
 import React from 'react';
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Contact = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Form submitted!');
     };
+
+    const onlineStatus = useOnlineStatus();
+    if (onlineStatus === false)
+        return (
+            <h1>Please check your internet connection</h1>
+        )
 
     return (
         <div className='contact p-6 bg-gray-100'>
