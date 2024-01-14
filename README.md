@@ -20,7 +20,7 @@ This is a fascinating project – a food ordering app using the power duo of Rea
 
 # How to run on your local
 
-Clone the repository
-Run npm init
-Run npm start.
-Make sure you've allow CORS extension installed in your browser.
+#Clone the repository
+#Run `npm init`
+#Run `npm start`.
+#Make sure you've allow CORS extension installed in your browser.
