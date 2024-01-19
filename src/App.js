@@ -11,6 +11,8 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import UserContext from "./utils/UserContext";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
+import Login from "./components/Login";
+import UserContext from "./utils/UserContext"
 
 // Chunking
 // Code Splitting
@@ -34,7 +36,7 @@ const AppLayout = () => {
             <Provider store={appStore}>
                 <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
                     <div className="app font-mono bg-gray-50">
-                        <Header />
+                        {userName ? <Header /> : null}
                         <Outlet />
                     </div>
                 </UserContext.Provider>
@@ -53,6 +55,10 @@ const appRouter = createBrowserRouter([
         children: [
             {
                 path: "/",
+                element: <Login />
+            },
+            {
+                path: "/browse",
                 element: <Body />
             },
             {
