@@ -76,41 +76,4 @@ const ItemList = ({ items }) => {
     );
 };
 
-
-//     return (
-//         <div>
-//             {items.map(item => (
-//                 <div key={item.card.info.id} className="relative p-2 m-2 border-solid border-black border-b-2 flex justify-between">
-//                     <div className="w-9/12 text-left">
-//                         {/* ... (existing code) */}
-//                     </div>
-//                     <div className="relative">
-//                         {item.card.info.imageId ? (
-//                             <div className="left-6 top-20 flex">
-//                                 <button
-//                                     className="p-2 mr-1 mb-1 h-8 flex items-center bg-gray-300 shadow-lg rounded-lg cursor-pointer"
-//                                     onClick={() => handleAddItem(item)}
-//                                 >
-//                                     Add
-//                                 </button>
-//                                 <button
-//                                     className="p-2 h-8 flex items-center bg-gray-300 shadow-lg rounded-lg cursor-pointer"
-//                                     onClick={handleRemoveItem}
-//                                 >
-//                                     Remove
-//                                 </button>
-//                             </div>
-//                         ) : null}
-//                         {item.card.info.imageId ? (
-//                             <img className="w-28 rounded-lg" src={CDN_URL + item.card.info.imageId} alt="Error" />
-//                         ) : (
-//                             <img className="w-28 rounded-lg" src={NONVEG_LOGO} alt="Error" />
-//                         )}
-//                     </div>
-//                 </div>
-//             ))}
-//         </div>
-//     );
-// }
-
 export default ItemList;

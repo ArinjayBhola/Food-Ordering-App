@@ -13,7 +13,6 @@ const Header = () => {
 
     const onlineStatus = useOnlineStatus();
     const { loggedInUser } = useContext(UserContext);
-    console.log(loggedInUser);
     const navigate = useNavigate();
 
     // Subscribing to the store using useSelector
